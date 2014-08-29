@@ -2,7 +2,7 @@
     "author": "Hung Tran",
     "name": "okcupidjs",
     "description": "Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "repository": {
         "type": "git",
         "url": "git://github.com/tranhungt/okcupidjs.git"
@@ -16,7 +16,7 @@
     "bot"
     ],
     "bugs": {
-        "url": "https://github.com:tranhungt/okcupidjs/issues",
+        "url": "https://github.com/tranhungt/okcupidjs/issues",
         "email": "tranhungt1@gmail.com"
     },
     "license": "MIT",
