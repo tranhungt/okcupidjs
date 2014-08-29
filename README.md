@@ -77,6 +77,8 @@ Pull requests and feature enhancements are very welcome.
 
 Credits
 -------
-Copyright &copy; 2014 Hung Tran
+Copyright &copy; 2014 [Hung Tran](http://hungtran.co)
+For reference, I wrote a small piece on OKCupid, online dating, and data privacy here:
+[http://hungtran.co/online-dating-and-personal-data-discovering-okcupids-api/](http://hungtran.co/online-dating-and-personal-data-discovering-okcupids-api/)
 
 Released under the MIT License, which can be found in the repository in `LICENSE.txt`.
