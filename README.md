@@ -72,8 +72,8 @@ Returns a json of user question data, beginning with the "low" question.
 The OkCupid API enforces pagination and won't return more than 10 questions per request, so to fetch all question data for a user, you need to make multiple calls and increment the "low" value. The index of a user's first answered question is 1. (Passing a value of 0 returns nothing.) For example:
 
 ```
-okc.getUserQuestions(username, 1, function(){}) // Fetch questions 1 through 10
-okc.getUserQuestions(username, 11, cb) // Fetch questions 11 through 20
+okc.getUserQuestions(username, 1, cb) // First 10 questions
+okc.getUserQuestions(username, 11, cb) // Next 10 questions
 // Etc...
 ```
 
