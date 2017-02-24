@@ -21,7 +21,7 @@ var okc = new OKCupid()
 Library Method Conventions
 ==========================
 NOTE:
-All methods are Asynchronous, and will return a standard `(err, res, body)` params to your callback. 
+All methods are Asynchronous, and will return a standard `(err, res, body)` params to your callback.
 Body will already be json parsed into a json object for easy handling.
 
 
@@ -40,8 +40,8 @@ Upon success, response will automatically store a cookie for subsequent requests
 ---
 `.getQuickmatch(callback)`
 
-This is the method you want to call first. 
-It gets you a new user in the area. Json body will contain target_userid and username for yoou to call `.rate`, `.visitUser`, `.getUserProfile`.
+This is the method you want to call first.
+It gets you a new user in the area. Json body will contain target_userid and username for you to call `.rate`, `.visitUser`, `.getUserProfile`.
 
 *Username is obtained via `body.sn`*
 
@@ -50,7 +50,7 @@ It gets you a new user in the area. Json body will contain target_userid and use
 ---
 `.visitUser(username, callback)`
 
-Takes a username. This visit method will emulate you actually visiting the user via browser. 
+Takes a username. This visit method will emulate you actually visiting the user via browser.
 
 *Will register on the user's visitors list,* so they will know you visited them.
 
@@ -63,6 +63,21 @@ Takes a user_id and a score rating integer (1-5). This is equivalent to the 1-5 
 `.getUserProfile(username, callback)`
 
 Returns a json of the user profile. Contains all the information as you would see if you visited the user's profile via browser. This will not register your name under the user's "visitor" list.
+
+---
+`.getUserQuestions(username, low, callback)`
+
+Returns a json of user question data, beginning with the "low" question.
+
+The OkCupid API enforces pagination and won't return more than 10 questions per request, so to fetch all question data for a user, you need to make multiple calls and increment the "low" value. The index of a user's first answered question is 1. (Passing a value of 0 returns nothing.) For example:
+
+```
+okc.getUserQuestions(username, 1, function(){}) // Fetch questions 1 through 10
+okc.getUserQuestions(username, 11, cb) // Fetch questions 11 through 20
+// Etc...
+```
+
+*Total number of questions for a user is obtained via `body.pagination.raw.total_num_results`*
 
 ---
 `.getVisitors(callback)`
