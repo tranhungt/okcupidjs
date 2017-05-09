@@ -67,12 +67,6 @@ Takes a username. Will cause you to like the user associated with that user ID.
 Takes a user ID. Will cause you to unlike the user associated with that user ID. 
 
 ---
-
-`.rate(target_userid, score, callback)`
-
-Takes a user_id and a score rating integer (1-5). This is equivalent to the 1-5 star rating.
-
----
 `.getUserProfile(username, callback)`
 
 Returns a json of the user profile. Contains all the information as you would see if you visited the user's profile via browser. This will not register your name under the user's "visitor" list.
