@@ -6,7 +6,10 @@ module.exports = {
     user_profile: 'http://www.okcupid.com/profile/{username}?okc_api=1',
     user_questions: 'http://www.okcupid.com/profile/{username}/questions?okc_api=1&low={low}',
     get_visitors: 'http://www.okcupid.com/visitors?okc_api=1',
-    quickmatch: 'http://www.okcupid.com/quickmatch?okc_api=1'
-    },
-    HEADERS: {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36'}
+    quickmatch: 'http://www.okcupid.com/quickmatch?okc_api=1',
+    
+    // OAuth API
+    like: 'https://www.okcupid.com/1/apitun/profile/{userid}/like',
+    unlike: 'https://www.okcupid.com/1/apitun/profile/{userid}/unlike',
+	}
 }

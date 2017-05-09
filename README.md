@@ -54,6 +54,19 @@ Takes a username. This visit method will emulate you actually visiting the user 
 
 *Will register on the user's visitors list,* so they will know you visited them.
 
+---
+
+`.like(user_id, callback)`
+
+Takes a username. Will cause you to like the user associated with that user ID.
+
+---
+
+`.unlike(user_id, callback)`
+
+Takes a user ID. Will cause you to unlike the user associated with that user ID. 
+
+---
 
 `.rate(target_userid, score, callback)`
 
