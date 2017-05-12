@@ -14,5 +14,5 @@ module.exports = {
     like: 'https://www.okcupid.com/1/apitun/profile/{userid}/like',
     unlike: 'https://www.okcupid.com/1/apitun/profile/{userid}/unlike',
     send_message: 'https://www.okcupid.com/1/apitun/messages/send',
-	}
+  }
 }
