@@ -163,6 +163,115 @@ The data structure with important members shown is:
 
 Usage Note: The thread ID can be collected from an inbox message object. Get the most recent messages with `getRecentMessages`.
 
+---
+`.search(options, callback)`
+
+Perform a serach as if visiting "Browse Matches" tab on the website. Search takes a options for determining filters, order, etc.
+
+```javascript
+{
+	// Primary filter
+	"order_by": "SPECIAL_BLEND", // "LOGIN" | "MATCH_AND_DISTANCE" | "ENEMY" | "MATCH" 
+	"i_want": "women", // "men" {
+	"they_want": "men", // "women" | "everyone"
+	"minimum_age": 18,
+	"maximum_age": 40,
+	"radius": 25, // miles from location
+	"last_login": 86400, // seconds since last login
+
+	// Looks filter
+	// Height: each inch is 254
+	// e.g. 5'4  is 5 * 12 * 254  + 4 * 254 = 16256
+	"maximum_height": null,
+	"minimum_height": null, 
+
+	// A-list features
+	"minimum_attractiveness" : null, // 4000 | 6000 | 8000 | 10000
+	"maximum_attractiveness" : null, // 4000 | 6000 | 8000 | 10000
+	"bodytype": [], "thin" | "fit" | "average" | "jacked" | "overweight" | "a_little_extra" | "full_figured" | "curvy"
+		
+	// Background filter
+	"languages": 0,
+	"speaks_my_language": true,
+	"ethnicity": [], "asian" | "black" | "native_american" | ...
+	"religion": ["agnosticism", "atheism"], "buddhism" | "catholicism" | "christianity" | "sikh" | ...
+
+	// Availabilty filter
+	"availability": "single", // "not_single"
+	"monogamy": "yes", // "no"
+	"looking_for": ["short_term_dating"], // "new_friends" | "long_term_dating" | "casual_sex"
+
+	// Personality filter
+	"personality_filters": {
+		"self_confidence" : ..., // "more" | "less"
+		"compassion" : ..., // "more" | "less"
+		"independence" : ..., // "more" | "less"
+		"introversion" : ..., // "more" | "less"
+		"adventuresome" : ..., // "more" | "less"
+		"artsiness" : ..., // "more" | "less"
+		"romantic" : ..., // "more" | "less"
+		"sex_experience" : ..., // "more" | "less"
+		"old_fashionedness" : ..., // "more" | "less"
+		"trust_in_others" : ..., // "more" | "less"
+		"purity" : ... // "more" | "less"
+	},
+
+	// Vices filter
+	"smoking": ["no", "sometimes"] // "when_drinking" | "trying_to_quit" | "yes"
+	"drinking": ["socially", "rarely", "very_often"] // "not_at_all" | "often" | desperately"
+	"drugs": ["sometimes"], // "never" | "often"
+		
+	// Questions filter	
+	"questions": [403], // question id collection, 403 is "Do you enjoy discussing politics?" 
+	"answers": [2], // 2 for "yes" to question 403
+	// maps by index to answer in "answers" field
+
+	// More filter
+	"interest_ids": [], // interests id
+	"education": ["post_grad"], // "two_year_college" | "college_university" | "high_school"
+	"children": ["wants_kids", "doesnt_have"] // "might_want" | "doesnt_want" | "has_one_or_more" 
+	"cats": ["has"], 
+	"dogs": [], "has"
+
+	// Additional metadata
+	"limit": 18, // max number of results
+	"fields": "userinfo,thumbs,percentages,likes,last_contacts,online" // additional data to be returned
+}
+
+```
+
+The body returned (with no fields set) will have the following structure: 
+
+```javascript
+{
+	"total_matches": ..., // some number 
+	"data": [...], // results collection
+	"paging" : {
+		"cursors" : {
+			"before" : ..., // before page hash
+			"current" : ..., // current page hash
+			"after" : ... // after page hash
+		}
+	}
+}
+```
+
+The data collection contains all the search results. The objects take the structure:
+
+```javascript
+{
+	"inactive": false,
+	"username": ..., // username 
+	"userid": ...,  // user id
+	"staff": false,
+	"isAdmin": false
+},
+```
+
+The results come back with a page hash. To get the next page results, this method can be called again with an addtional `after` field set in the options object. The value should be set to the value stored in `body.paging.after`. This process can iterated to produce all search results.
+
+The same process can also be applied in reverse with `before`. 
+
 Collaboration
 =============
 Feel free to send suggestions, ask questinos, or report issues via the issues board.
