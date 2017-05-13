@@ -91,6 +91,71 @@ okc.getUserQuestions(username, 11, cb) // Next 10 questions
 
 Returns a list of your "stalkers" who have visited you.
 
+---
+`.sendMessage(user_id, message_body, callback)`
+
+Send a message to a user. 
+
+---
+`.getRecentMessages(callback)`
+
+Body parameter contains metadata about the inbox and a collection of the first 30 message objects in the inbox.
+
+The data structure with important members shown is:
+
+```javascript
+{
+	messages: [ ... ], // collection of inbox message objects
+	num_threads: ..., // number of threads in the inbox
+	numunread: ..., // number of undread threads
+	pct_full: ..., // percentage full 
+}
+```
+
+An inbox message object will contain metadata about the message and a snippet of the message body. The full body can be accessed by using `getMessageThread`. The following structure shows some of the important members in a message object:
+
+```javascript
+{
+	is_new: ..., // 0 or 1
+	person: ..., // username of the other person
+	personid: ..., // user id of the other person
+	snippet: ..., // short preview of the message body
+	thread_id: ..., // thread ID
+	timestamp: ..., // time stamp
+	status: ..., // string status of message, will be "repliedMessage" if message has been replied to
+}
+```
+
+---
+`getMessageThread(thread_id, callback)`
+
+Get the message thread (all sent and received messages) with a thread ID. Body parameter contains metadata about the thread and a collection of message objects.
+
+The data structure with important members shown is:
+
+```javascript
+{
+	buddyname: ..., // username of the other person 
+	num_msg: ..., // number of messages in the thread
+	messages: [ ... ], // collection of thread message objects
+}
+```
+
+A thread message object contains metadata about the message and the complete message body.
+
+The data structure with important members shown is:
+
+```javascript
+{
+	timestamp: ..., 
+	receiver_name: ..., 
+	sender_name: ..., 
+	msgid: ..., // a message ID
+	rawbody: ... // complete body of the message
+}
+```
+
+Usage Note: The thread ID can be collected from an inbox message object. Get the most recent messages with `getRecentMessages`.
 
 Collaboration
 =============
