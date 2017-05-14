@@ -166,7 +166,7 @@ Usage Note: The thread ID can be collected from an inbox message object. Get the
 ---
 `.search(options, callback)`
 
-Perform a serach as if visiting "Browse Matches" tab on the website. Search takes a options for determining filters, order, etc.
+Perform a search as if visiting "Browse Matches" tab on the website. Search takes a options for determining filters, order, etc.
 
 ```javascript
 {
@@ -268,7 +268,7 @@ The data collection contains all the search results. The objects take the struct
 },
 ```
 
-The results come back with a page hash. To get the next page results, this method can be called again with an addtional `after` field set in the options object. The value should be set to the value stored in `body.paging.after`. This process can iterated to produce all search results.
+The results come back with a page hash. To get the next page results, this method can be called again with an additional `after` field set in the options object. The value should be set to the value stored in `body.paging.after`. This process can iterated to produce all search results.
 
 The same process can also be applied in reverse with `before`. 
 
