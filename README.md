@@ -271,8 +271,15 @@ Collaboration
 Feel free to send suggestions, ask questinos, or report issues via the issues board.
 Pull requests and feature enhancements are very welcome.
 
-Credits
+Credits And Special Thanks
 -------
+
+### Special Thanks To
+
+* **Mackenzie Clark** _(@xmclark)_ for major contributions in user messaging flow, user search, and bug fixes.
+* **Joshua Beeler** _(@joshuabeeler)_ contributions in getting user questions.
+
+
 Copyright &copy; 2014 [Hung Tran](http://hungtran.co)
 For reference, I wrote a small piece on OKCupid, online dating, and data privacy here:
 [http://hungtran.co/online-dating-and-personal-data-discovering-okcupids-api/](http://hungtran.co/online-dating-and-personal-data-discovering-okcupids-api/)
