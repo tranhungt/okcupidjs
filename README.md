@@ -276,8 +276,8 @@ Credits And Special Thanks
 
 ### Special Thanks To
 
-* **Mackenzie Clark** _(@xmclark)_ for major contributions in user messaging flow, user search, and bug fixes.
-* **Joshua Beeler** _(@joshuabeeler)_ contributions in getting user questions.
+* **Mackenzie Clark** _([@xmclark](https://github.com/xmclark))_ for major contributions in user messaging flow, user search, and bug fixes.
+* **Joshua Beeler** _([@joshuabeeler](https://github.com/joshuabeeler))_ for contributions in getting user questions.
 
 
 Copyright &copy; 2014 [Hung Tran](http://hungtran.co)
