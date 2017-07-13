@@ -266,6 +266,23 @@ The results come back with a page hash. To get the next page results, this metho
 
 The same process can also be applied in reverse with `before`. 
 
+Code Samples
+============
+Here is a sample request to login, go to the quickmatch/double-take page, and subsequently LIKE the user.
+```
+var OKCupid = require('okcupidjs')
+var okc = new OKCupid()
+
+okc.login('okc_username', 'okc_password', function(err, res, body) {
+    okc.getQuickmatch(function(err, res, body) {
+        okc.like(body.tuid);
+    }
+})    
+```
+If you then go onto the okc web page, and go to `Likes -> Who you like`, you will see that you have liked a new person.
+I hope this helps.
+
+
 Collaboration
 =============
 Feel free to send suggestions, ask questinos, or report issues via the issues board.
