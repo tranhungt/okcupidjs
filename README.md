@@ -282,6 +282,42 @@ okc.login('okc_username', 'okc_password', function(err, res, body) {
 If you then go onto the okc web page, and go to `Likes -> Who you like`, you will see that you have liked a new person.
 I hope this helps.
 
+Search
+-------
+Another use case is searching for users. The search API is rich and one may query on many different attributes. Perhaps you are interseted in a single, straight woman who is between the ages 31 and 37. This women has cats and never does drugs. They are also more adventurous and less artistic. This criteria can be made into a query object that can get passed to the search method on an okc object.
+```
+var OKCupid = require('okcupidjs')
+var okc = new OKCupid()
+
+okc.login('okc_username', 'okc_password', function(err, res, body) {
+  var query = {
+    "i_want": "women"
+    "minimum_age": 31,
+    "maximum_age": 37,
+    "cats": ["has"], 
+    "personality_filters": {
+      "adventuresome" : "more",
+      "artsiness" : "less"
+    },
+    "drugs": ["never"]
+  }
+
+  okc.search(query, function(err, res, body) {
+    if (err) {
+      console.log("Failed to get search results.");
+    } 
+    else {
+      // use the body object to extract the search results
+      var results = body.data;
+
+      console.log('Users:\n')
+      results.forEach(function(user) {
+        console.log(user.username + '\n');
+      });
+    }
+  });
+})    
+```
 
 Collaboration
 =============
