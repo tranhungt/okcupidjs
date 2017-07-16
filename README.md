@@ -319,6 +319,8 @@ okc.login('okc_username', 'okc_password', function(err, res, body) {
 })    
 ```
 
+Search results are limited to about 30 results per request. To scrape more data from search, one has to sequentially create requests to retrieve search result pages. See [the search pagination guide](SEARCH.md) for details and an example.
+
 Collaboration
 =============
 Feel free to send suggestions, ask questinos, or report issues via the issues board.
