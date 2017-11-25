@@ -9,11 +9,12 @@ module.exports = {
     quickmatch: 'http://www.okcupid.com/quickmatch?okc_api=1',
     get_messages: 'https://www.okcupid.com/messages?okc_api=1',
     get_thread: 'https://www.okcupid.com/messages?okc_api=1&readmsg=true&threadid={thread_id}',
-    
+
     // OAuth API
     like: 'https://www.okcupid.com/1/apitun/profile/{userid}/like',
     unlike: 'https://www.okcupid.com/1/apitun/profile/{userid}/unlike',
     send_message: 'https://www.okcupid.com/1/apitun/messages/send',
     search: 'https://www.okcupid.com/1/apitun/match/search',
+    edit_profile: 'https://www.okcupid.com/1/apitun/profile/edit/{editCategory}',
   }
 }
