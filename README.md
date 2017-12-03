@@ -266,6 +266,36 @@ The results come back with a page hash. To get the next page results, this metho
 
 The same process can also be applied in reverse with `before`. 
 
+---
+`.editProfile(edit_category, options, callback)`
+
+Edit the desired category.
+
+The categories available are the following:
+* essays
+
+There are 10 essays that you can edit:
+* 0: My self-summary
+* 1: What I’m doing with my life
+* 2: I’m really good at 
+* 3: The first things people usually notice about me
+* 4: Favorite books, movies, shows, music, and food
+* 5: Six things I could never do without
+* 6: I spend a lot of time thinking about
+* 7: On a typical Friday night I am
+* 8: The most private thing I’m willing to admit
+* 9: You should message me if
+
+For example, if you want to edit the 4th essay, your query needs to be the following:
+
+```javascript
+var query = {
+	'essays': {
+		'4': 'Matrix is my favorite movie'
+	}
+}
+```
+
 Code Samples
 ============
 Here is a sample request to login, go to the quickmatch/double-take page, and subsequently LIKE the user.
