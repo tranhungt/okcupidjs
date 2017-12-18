@@ -11,19 +11,30 @@ Installation
 Usage
 =====
 
-Require and Instantiate OKCupidjs
-```
+All methods are asynchronous, and will return a standard `(err, res, body)` params to your callback. The body will already be json parsed into a json object for easy handling. The following demonstrates how to require and instantiate OKCupidjs.
+
+```javascript
 var OKCupid = require('okcupidjs')
 
 var okc = new OKCupid()
+
+okc.login("username", "password", function(err, res, body) {
+  console.log("done!");
+});
 ```
 
-Library Method Conventions
-==========================
-NOTE:
-All methods are Asynchronous, and will return a standard `(err, res, body)` params to your callback.
-Body will already be json parsed into a json object for easy handling.
+The library may be converted to a promise-style API by using a promise library like [bluebird.js](http://bluebirdjs.com/docs/features.html#promisification-on-steroids). This is an example using bluebird:
 
+```javascript
+var OKCupid = require('okcupidjs');
+var Promise = require('bluebird');
+
+var okc = Promise.promisifyAll(new OKCupid());
+
+okc.loginAsync("username", "password").then(function(done) {
+  console.log("done!");
+});
+```
 
 Methods
 =======
