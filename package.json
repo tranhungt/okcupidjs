@@ -26,6 +26,6 @@
         "node": "*"
     },
     "dependencies": {
-        "request": "~2.40.0"
+        "request": "~2.83.0"
     }
 }
