@@ -308,9 +308,9 @@ var query = {
 ```
 
 ---
-`.getMatches(options, callback)`
+`.getLikes(options, callback)`
 
-Perform a request for current matches.
+Perform a request for Likes, as seen on the Likes page.
 
 The `options` variable is used to construct the query string for the request, for example:
 
@@ -319,6 +319,9 @@ var options = {
 	fields: "likes,thumbs.limit(1){225x225},location,userinfo,online,percentages,last_contacts"
 }
 ```
+
+It is possible to distinguish a "match" from a "like" by looking at the returned `section`
+property for each user.
 
 The results of this request are paginated in the same way as the `search` method.
 To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
