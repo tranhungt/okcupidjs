@@ -307,6 +307,22 @@ var query = {
 }
 ```
 
+---
+`.getMatches(options, callback)`
+
+Perform a request for current matches.
+
+The `options` variable is used to construct the query string for the request, for example:
+
+```javascript
+var options = {
+	fields: "likes,thumbs.limit(1){225x225},location,userinfo,online,percentages,last_contacts"
+}
+```
+
+The results of this request are paginated in the same way as the `search` method.
+To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
+
 Code Samples
 ============
 Here is a sample request to login, go to the quickmatch/double-take page, and subsequently LIKE the user.
