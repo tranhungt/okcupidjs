@@ -16,5 +16,6 @@ module.exports = {
     send_message: 'https://www.okcupid.com/1/apitun/messages/send',
     search: 'https://www.okcupid.com/1/apitun/match/search',
     edit_profile: 'https://www.okcupid.com/1/apitun/profile/edit/{editCategory}',
+    connections: 'https://www.okcupid.com/1/apitun/connections/outgoing',
   }
 }
