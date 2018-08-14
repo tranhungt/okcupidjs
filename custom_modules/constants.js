@@ -15,6 +15,6 @@ module.exports = {
     unlike: 'https://www.okcupid.com/1/apitun/profile/{userid}/unlike',
     send_message: 'https://www.okcupid.com/1/apitun/messages/send',
     search: 'https://www.okcupid.com/1/apitun/match/search',
-    edit_profile: 'https://www.okcupid.com/1/apitun/profile/edit/{editCategory}',
+    edit_profile: 'https://www.okcupid.com/1/apitun/profile/save_essay',
   }
 }
