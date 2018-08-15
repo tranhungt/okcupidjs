@@ -351,7 +351,7 @@ var okc = new OKCupid()
 
 okc.login('okc_username', 'okc_password', function(err, res, body) {
   var query = {
-    "i_want": "women"
+    "i_want": "women",
     "minimum_age": 31,
     "maximum_age": 37,
     "cats": ["has"], 
