@@ -2,6 +2,11 @@ OKCupidjs
 =========
 Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.
 
+We're on Slack!
+===============
+Talk about the project on our slack: 
+https://publicslack.com/slacks/okcupidjs/invites/new
+
 
 Installation
 ===========
@@ -386,8 +391,6 @@ Collaboration
 Feel free to send suggestions, ask questinos, or report issues via the issues board.
 Pull requests and feature enhancements are very welcome.
 
-Talk about the project on our slack: 
-https://okcupidjs.slack.com/
 
 Credits And Special Thanks
 -------
