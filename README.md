@@ -307,6 +307,25 @@ var query = {
 }
 ```
 
+---
+`.getLikes(options, callback)`
+
+Perform a request for Likes, as seen on the Likes page.
+
+The `options` variable is used to construct the query string for the request, for example:
+
+```javascript
+var options = {
+	fields: "likes,thumbs.limit(1){225x225},location,userinfo,online,percentages,last_contacts"
+}
+```
+
+It is possible to distinguish a "match" from a "like" by looking at the returned `section`
+property for each user.
+
+The results of this request are paginated in the same way as the `search` method.
+To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
+
 Code Samples
 ============
 Here is a sample request to login, go to the quickmatch/double-take page, and subsequently LIKE the user.
@@ -332,7 +351,7 @@ var okc = new OKCupid()
 
 okc.login('okc_username', 'okc_password', function(err, res, body) {
   var query = {
-    "i_want": "women"
+    "i_want": "women",
     "minimum_age": 31,
     "maximum_age": 37,
     "cats": ["has"], 
@@ -378,6 +397,7 @@ Credits And Special Thanks
 * **Mackenzie Clark** _([@xmclark](https://github.com/xmclark))_ for major contributions in user messaging flow, user search, and bug fixes.
 * **Joshua Beeler** _([@joshuabeeler](https://github.com/joshuabeeler))_ for contributions in getting user questions.
 * **Pierrick Turelier** _([@PierrickGT](https://github.com/PierrickGT))_ for contributions in editing user profile.
+* **Tamara Jordan** _([@tamj0rd2](https://github.com/tamj0rd2))_ for get matches endpoint.
 
 
 Copyright &copy; 2014 [Hung Tran](http://hungtran.co)
