@@ -8,8 +8,8 @@ okc.login(process.env.OKC_USERNAME, process.env.OKC_PASSWORD, function(err, res,
   var base_query = {
     // Primary filter
     "order_by": "MATCH", // "LOGIN" | "MATCH_AND_DISTANCE" | "ENEMY" | "MATCH"
-    "i_want": "women", // "men" {
-    "they_want": "men", // "women" | "everyone"
+    "i_want": "men", // "men" {
+    "they_want": "women", // "women" | "everyone"
     "minimum_age": 20,
     "maximum_age": 30,
     "radius": 10, // miles from location
@@ -27,7 +27,20 @@ okc.login(process.env.OKC_USERNAME, process.env.OKC_PASSWORD, function(err, res,
   function search(okc, query, count) {
     let peopleReached = 0;
     okc.search(query, function(err,res,body) {
-      // console.log(body)
+      if (err) {
+        console.log("got an error: " + err);
+        return;
+      }
+
+      if (!body.data && body.error.type === 'ParamError') {
+        console.log(body.error.message);
+        return;
+      }
+      else if (!body) {
+        console.log("body.data is undefined");
+        return;
+      }
+
       body.data.forEach(function(user) {
         let userArray = [];
         userArray.push(user.userid);
@@ -35,13 +48,13 @@ okc.login(process.env.OKC_USERNAME, process.env.OKC_PASSWORD, function(err, res,
 
         function likeUserArray (userArray) {
           userArray.forEach(user_id => {
-            okc.like(user_id);
+            // okc.like(user_id);
             console.log("Liked user.")
           });
         }
         function messageUserArray (userArray) {
           userArray.forEach(user_id => {
-            okc.sendMessage(user_id, "Hello.");
+            // okc.sendMessage(user_id, "Hello.");
             console.log("Messaged user.")
           });
         };
