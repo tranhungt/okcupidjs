@@ -1,0 +1,18 @@
+{
+  "name": "filters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "okcupidjs": "../../"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0"
+  }
+}
