@@ -44,7 +44,28 @@ okc.loginAsync("username", "password").then(function(done) {
 Methods
 =======
 
+Working endpoints as of 9/21/18
+
+|Title|Method|Works?|Comment|
+|-----|------|:----:|-------|
+[Login](#login)					|`.login(username, password, callback)` 	|✅|
+[Get Quickmatch](#get-quickmatch)		|`.getQuickmatch(callback)`			|✅|	
+[Visit User](#visit-user)			|`.visitUser(username, callback)` 		|❌| 	needs the okc_api=1 and returns nothing
+[Like](#like)					|`.like(user_id, callback)` 			|✅|	
+[Unlike](#unlike)				|`.unlike(user_id, callback)` 			|✅|	
+[Get User's Profile](#get-users-profile)	|`.getUserProfile(username, callback)` 		|❌|	Always returns html, newline if okc_api
+[Get User's Questions](#get-users-questions)	|`.getUserQuestions(username, low, callback)` 	|❌| 	always returns html
+[Get Visitors](#get-visitors)			|`.getVisitors(callback)` 			|❌| 	get JSON OKC developer/recruiting message
+[Send Message](#send-message)			|`.sendMessage(user_id, message_body, callback)`|✅| 	
+[Get Recent Messages](#get-recent-messages)	|`.getRecentMessages(callback)`			|❌| 	route changed
+[Search (Browse Matches)](#search-browse-matches)	|`.search(options, callback) `			|✅|	
+[Get Message Thread](#edit-profile)		|`.getMessageThread(thread_id, callback)` 	|✅|	adjusted to use oauth routes
+[Edit Profile](#edit-profile)			|`.editProfile(edit_category, options, callback)`|✅|	adjusted to use oauth routes
+[Get Likes](#get-likes)				|`.getLikes(options, callback)`			|✅|
+
 ---
+### Login
+
 `.login(username, password, callback)`
 
 Call this first to authenticate before calling other methods.
@@ -54,6 +75,8 @@ Takes a username and password, the same ones you use to login on the okc website
 Upon success, response will automatically store a cookie for subsequent requests.
 
 ---
+### Get Quickmatch
+
 `.getQuickmatch(callback)`
 
 This is the method you want to call first.
@@ -64,6 +87,8 @@ It gets you a new user in the area. Json body will contain target_userid and use
 *Target_userid is obtained via `body.tuid`*
 
 ---
+### Visit User
+
 `.visitUser(username, callback)`
 
 Takes a username. This visit method will emulate you actually visiting the user via browser.
@@ -71,23 +96,27 @@ Takes a username. This visit method will emulate you actually visiting the user 
 *Will register on the user's visitors list,* so they will know you visited them.
 
 ---
+### Like
 
 `.like(user_id, callback)`
 
 Takes a username. Will cause you to like the user associated with that user ID.
 
 ---
+### Unlike
 
 `.unlike(user_id, callback)`
 
 Takes a user ID. Will cause you to unlike the user associated with that user ID. 
 
 ---
+### Get User's Profile
 `.getUserProfile(username, callback)`
 
 Returns a json of the user profile. Contains all the information as you would see if you visited the user's profile via browser. This will not register your name under the user's "visitor" list.
 
 ---
+### Get User's Questions
 `.getUserQuestions(username, low, callback)`
 
 Returns a json of user question data, beginning with the "low" question.
@@ -103,16 +132,19 @@ okc.getUserQuestions(username, 11, cb) // Next 10 questions
 *Total number of questions for a user is obtained via `body.pagination.raw.total_num_results`*
 
 ---
+### Get Visitors
 `.getVisitors(callback)`
 
 Returns a list of your "stalkers" who have visited you.
 
 ---
+### Send Message
 `.sendMessage(user_id, message_body, callback)`
 
 Send a message to a user. 
 
 ---
+### Get Recent Messages
 `.getRecentMessages(callback)`
 
 Body parameter contains metadata about the inbox and a collection of the first 30 message objects in the inbox.
@@ -143,6 +175,7 @@ An inbox message object will contain metadata about the message and a snippet of
 ```
 
 ---
+### Get Message Thread
 `getMessageThread(thread_id, callback)`
 
 Get the message thread (all sent and received messages) with a thread ID. Body parameter contains metadata about the thread and a collection of message objects.
@@ -174,6 +207,8 @@ The data structure with important members shown is:
 Usage Note: The thread ID can be collected from an inbox message object. Get the most recent messages with `getRecentMessages`.
 
 ---
+### Search (Browse Matches)
+
 `.search(options, callback)`
 
 Perform a search as if visiting "Browse Matches" tab on the website. Search takes a options for determining filters, order, etc.
@@ -283,6 +318,8 @@ The results come back with a page hash. To get the next page results, this metho
 The same process can also be applied in reverse with `before`. 
 
 ---
+### Edit Profile
+
 `.editProfile(edit_category, options, callback)`
 
 Edit the desired category.
@@ -313,6 +350,8 @@ var query = {
 ```
 
 ---
+### Get Likes
+
 `.getLikes(options, callback)`
 
 Perform a request for Likes, as seen on the Likes page.
@@ -328,7 +367,7 @@ var options = {
 It is possible to distinguish a "match" from a "like" by looking at the returned `section`
 property for each user.
 
-The results of this request are paginated in the same way as the `search` method.
+The results of this request are paginated in the same way as the `search` [method](#search-browse-matches).
 To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
 
 Code Samples
