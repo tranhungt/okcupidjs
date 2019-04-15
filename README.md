@@ -54,7 +54,7 @@ Working endpoints as of 9/21/18
 [Like](#like)					|`.like(user_id, callback)` 			|✅|	
 [Unlike](#unlike)				|`.unlike(user_id, callback)` 			|✅|	
 [Get User's Profile](#get-users-profile)	|`.getUserProfile(username, callback)` 		|❌|	Always returns html, newline if okc_api
-[Get User's Questions](#get-users-questions)	|`.getUserQuestions(username, low, callback)` 	|❌| 	always returns html
+[Get User's Questions](#get-users-questions)	|`.getUserQuestions(username, options, callback)` 	|✅|
 [Get Visitors](#get-visitors)			|`.getVisitors(callback)` 			|❌| 	get JSON OKC developer/recruiting message
 [Send Message](#send-message)			|`.sendMessage(user_id, message_body, callback)`|✅| 	
 [Get Recent Messages](#get-recent-messages)	|`.getRecentMessages(callback)`			|❌| 	route changed
@@ -117,11 +117,13 @@ Returns a json of the user profile. Contains all the information as you would se
 
 ---
 ### Get User's Questions
-`.getUserQuestions(username, low, callback)`
+`.getUserQuestions(username, options, callback)`
 
-Returns a json of user question data, beginning with the "low" question.
+Returns a json of user question/answer data.
 
-The OkCupid API enforces pagination and won't return more than 10 questions per request, so to fetch all question data for a user, you need to make multiple calls and increment the "low" value. The index of a user's first answered question is 1. (Passing a value of 0 returns nothing.) For example:
+The results come back with a page hash. To get the next page results, this method can be called again with an additional `after` field set in the options object. The value should be set to the value stored in `body.paging.after`. This process can iterated to produce all search results.
+
+The same process can also be applied in reverse with `before`. 
 
 ```
 okc.getUserQuestions(username, 1, cb) // First 10 questions
