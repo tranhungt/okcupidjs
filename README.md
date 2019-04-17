@@ -121,7 +121,7 @@ Returns a json of the user profile. Contains all the information as you would se
 
 Returns a json of user question/answer data.
 
-The results come back with a page hash. To get the next page results, this method can be called again with an additional `after` field set in the options object. The value should be set to the value stored in `body.paging.after`. This process can iterated to produce all search results.
+The results come back with a page hash. To get the next page results, this method can be called again with an additional `after` field set in the options object. The value should be set to the value stored in `body.paging.after`. This process can be iterated to produce all search results.
 
 The same process can also be applied in reverse with `before`. 
 
